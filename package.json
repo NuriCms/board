@@ -1,0 +1,11 @@
+{
+  "name": "nuricms-board",
+  "devDependencies": {
+    "grunt": ">0.4.0",
+    "grunt-contrib-jshint": "*"
+  },
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt default"
+  }
+}
