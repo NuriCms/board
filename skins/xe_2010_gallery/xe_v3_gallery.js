@@ -1,4 +1,7 @@
 jQuery(function($){
+	"use strict";
+	/* jshint undef:false */
+
 	// user text input focus/blur/change
 	var iText = $('.item .iLabel').next('.iText');
 	$('.item .iLabel').css('position','absolute');
@@ -7,14 +10,14 @@ jQuery(function($){
 			$(this).prev('.iLabel').css('visibility','hidden');
 		})
 		.blur(function(){
-			if($(this).val() == ''){
+			if($(this).val() === ''){
 				$(this).prev('.iLabel').css('visibility','visible');
 			} else {
 				$(this).prev('.iLabel').css('visibility','hidden');
 			}
 		})
 		.change(function(){
-			if($(this).val() == ''){
+			if($(this).val() === ''){
 				$(this).prev('.iLabel').css('visibility','visible');
 			} else {
 				$(this).prev('.iLabel').css('visibility','hidden');
@@ -27,6 +30,9 @@ jQuery(function($){
 
 // SNS Post
 (function($){
+	"use strict";
+	/* jshint undef:false */
+
 	$.fn.snspost = function(opts) {
 		var loc = '';
 		opts = $.extend({}, {type:'twitter', event:'click', content:''}, opts);
@@ -42,7 +48,7 @@ jQuery(function($){
 			case 'delicious':
 				loc = 'http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(opts.url||location.href)+'&title='+opts.content;
 				break;
-			case 'twitter':
+			// case 'twitter':
 			default:
 				loc = 'http://twitter.com/home?status='+opts.content;
 				break;

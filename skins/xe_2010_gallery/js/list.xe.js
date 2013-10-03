@@ -1,6 +1,12 @@
 jQuery(function($){
+	"use strict";
+	/* jshint undef:false */
+
 	// get template
-	var $list_body = $('form.list-body'), $tpl = $list_body.find('.list-container:first').remove(), $paging = $('form.pagination ul'), animating=false;
+	var $list_body = $('form.list-body'),
+		$tpl = $list_body.find('.list-container:first').remove(),
+		$paging = $('form.pagination ul'),
+		animating = false;
 
 	function load(page, params) {
 		page = parseInt(page, 10) || xe_v3.page;
@@ -27,7 +33,8 @@ jQuery(function($){
 	}
 
 	function draw(data) {
-		var list, nav, error, i, c, d, e, box_h, current_h, link, item, $fs, $current, $box, $ul, $item, $item_tpl, $fs, member_srls=[], used={};
+		var list, nav, error, i, c, d, e, box_h, current_h, link, item, $fs,
+			$current, $box, $ul, $item, $item_tpl, member_srls = [], used = {};
 
 		if (data.error) {
 			alert(data.message);
@@ -44,9 +51,9 @@ jQuery(function($){
 		$item_tpl = $ul.find('>li:first').remove();
 		$current  = $list_body.find('div.list-container');
 
-		for(i=0,c=xe_v3.list_count; i < c; i++) {
+		for(i = 0, c = xe_v3.list_count; i < c; i++) {
 			item  = list[i];
-			$item = $item_tpl.clone(true).addClass(i%2?'even':'odd').appendTo($ul);
+			$item = $item_tpl.clone(true).addClass(i % 2 ? 'even' : 'odd').appendTo($ul);
 
 			if (!item) {
 				$item.find('>*').css('visibility', 'hidden');
@@ -55,10 +62,10 @@ jQuery(function($){
 
 			if (!used['@'+item.member_srl]) {
 				member_srls[member_srls.length] = item.member_srl;
-                used['@'+item.member_srl] = 1;
+				used['@'+item.member_srl] = 1;
 			}
 
-			link = request_uri+'index.php?mid='+current_mid+'&document_srl='+item.document_srl+'&page='+nav.cur_page;
+			link = request_uri + 'index.php?mid=' + current_mid + '&document_srl=' + item.document_srl + '&page=' + nav.cur_page;
 
 			$item
 				.find('>.title')
@@ -91,7 +98,7 @@ jQuery(function($){
 		current_h = $current.height();
 		$fs       = $list_body.find('>fieldset');
 
-		if (isNaN(parseInt($fs[0].style.height))) $fs.css('height', current_h);
+		if (isNaN(parseInt($fs[0].style.height, 10))) $fs.css('height', current_h);
 
 		$fs.animate({'height':box_h}, {duration:d,easing:e,queue:false});
 		$box.css({position:'absolute',width:$current.width()});
@@ -139,7 +146,7 @@ jQuery(function($){
 					})
 					.end()
 				.prev('li.first')
-					.find('>a').each(function(){ this.className = (xe_v3.page < 2)?'':'active' }).end()
+					.find('>a').each(function(){ this.className = (xe_v3.page < 2)?'':'active'; }).end()
 					.end()
 				.end()
 			.next('li.next')
@@ -152,9 +159,9 @@ jQuery(function($){
 				.next('li.last')
 					.find('>a')
 						.each(function(){
-							this.href = this.href.replace(/page=[0-9]+/, 'page='+nav.total_page)
+							this.href = this.href.replace(/page=[0-9]+/, 'page='+nav.total_page);
 							this.className = (xe_v3.page >= nav.total_page)?'':'active';
-						})
+						});
 
 		location.hash = '#'+location.hash.substr(1).replace(/&?page=[0-9]+/, '')+'page='+xe_v3.page;
 		watch_hash.start(hash_onchange);
@@ -164,7 +171,7 @@ jQuery(function($){
 		var tt = {nbsp:' ',lt:'<',gt:'>',quot:'"'};
 
 		str = str.replace(/<[^>]+>/g, '');
-		str = str.replace(/&([a-z]+);/g, function(all,m1){ return tt[m1]||'' });
+		str = str.replace(/&([a-z]+);/g, function(all,m1){ return tt[m1]||'';});
 
 		return str;
 	}
@@ -222,7 +229,11 @@ jQuery(function($){
 	var $seform = $('#board_search');
 	$seform.prev('button').click(function(){
 		$seform.toggleClass('_off');
-		$seform.hasClass('_off')?$seform.hide():$seform.show().find('.iText').focus();
+		if($seform.hasClass('_off')) {
+			$seform.hide();
+		} else {
+			$seform.show().find('.iText').focus();
+		}
 	});
 	if (!$seform.find('input[name=search_keyword]').val()) $seform.prev('button').click();
 
@@ -246,12 +257,12 @@ jQuery(function($){
 				this._last_hash = location.hash;
 			}
 
-			this._timer = setTimeout(function(){ self.exec(callback) }, 200);
+			this._timer = setTimeout(function(){ self.exec(callback); }, 200);
 		},
 		stop : function() {
 			clearTimeout(this._timer);
 		}
-	}
+	};
 
 	watch_hash.start();
 });
