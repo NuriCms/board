@@ -33,6 +33,7 @@ class boardAdminModel extends board
 		$oModuleModel = &getModel('module');
 		$moduleInfo = $oModuleModel->getModuleInfoByModuleSrl($moduleSrl);
 		$moduleInfo->use_status = explode('|@|', $moduleInfo->use_status);
+
 		if($moduleInfo)
 		{
 			Context::set('module_info', $moduleInfo);
