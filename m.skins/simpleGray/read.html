@@ -13,21 +13,21 @@
 			<span>{$oDocument->getRegdate()}</span>
 		</div>
 		<div class="co">
-                <!--@if($oDocument->isSecret() && !$oDocument->isGranted())-->
-                    <div class="secretContent">
-                        <form action="./" method="get" onsubmit="return procFilter(this, input_password)">
-                        <input type="hidden" name="mid" value="{$mid}" />
-                        <input type="hidden" name="page" value="{$page}" />
-                        <input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+				<!--@if($oDocument->isSecret() && !$oDocument->isGranted())-->
+					<div class="secretContent">
+						<form action="./" method="get" onsubmit="return procFilter(this, input_password)">
+						<input type="hidden" name="mid" value="{$mid}" />
+						<input type="hidden" name="page" value="{$page}" />
+						<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
 
-                            <div class="title">{$lang->msg_is_secret}</div>
-                            <div class="content">
+							<div class="title">{$lang->msg_is_secret}</div>
+							<div class="content">
 								<input type="password" name="password" id="cpw" /><input type="submit" value="{$lang->cmd_input}" />
-                            </div>
+							</div>
 
-                        </form>
-                    </div>
-                <!--@else-->
+						</form>
+					</div>
+				<!--@else-->
 				<!--@if($oDocument->isExtraVarsExists())-->
 					{@ $_extra_vars = $oDocument->getExtraVars(); }
 					<dl class="xv">
@@ -37,7 +37,7 @@
 					<!--@end-->
 					</dl>
 				<!--@end-->
-			    {$oDocument->getContent(false)}
+				{$oDocument->getContent(false)}
 				<!--@end-->
 		</div>
 		<!--@if($oDocument->hasUploadedFiles())-->
@@ -107,7 +107,7 @@
 	<ul class="cm">
 		<li class="fl"><a href="{getUrl('document_srl','')}" class="bn">{$lang->cmd_list}</a></li>
 		<li class="fr"><a href="{getUrl('act','dispBoardWrite','document_srl','')}" class="bn">{$lang->cmd_write}</a></li>
-        <!--@if($oDocument->isEditable())-->
+		<!--@if($oDocument->isEditable())-->
 		<li class="fr"><a href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl,'comment_srl','')}" class="bn">{$lang->cmd_delete}</a></li>
 		<!--@end-->
 	</ul>

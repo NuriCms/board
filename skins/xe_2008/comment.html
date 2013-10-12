@@ -7,14 +7,14 @@
 			<a href="#reply" title="{$lang->comment}"><strong>'{$oDocument->getCommentcount()}'</strong> {$lang->comment}</a>
 		<!--@end-->
 	</h3>
-	
+
 	<div class="replyList">
 
 		{@ $_comment_list = $oDocument->getComments() }
 		<!--@foreach($_comment_list as $key => $comment)-->
 				<div class="item <!--@if($comment->get('depth'))-->reply<!--@end-->" id="comment_{$comment->comment_srl}">
 					<div class="indent" <!--@if($comment->get('depth'))--> style="margin-left:{($comment->get('depth'))*15}px" <!--@end-->>
-	
+
 					<h4 class="author">
 					<!--@if(!$comment->member_srl)-->
 						<!--@if($comment->homepage)-->
@@ -29,20 +29,20 @@
 
 					<dl class="time">
 						<dd>
-                            {$comment->getRegdate('Y.m.d')} 
+							{$comment->getRegdate('Y.m.d')}
 						</dd>
 						<dd>
 							{$comment->getRegdate('H:i:s')}
 						</dd>
-                        <!--@if($grant->manager || $module_info->display_ip_address!='N')-->
+						<!--@if($grant->manager || $module_info->display_ip_address!='N')-->
 						<dd>
-                            ({$comment->getIpaddress()})
+							({$comment->getIpaddress()})
 						</dd>
-                        <!--@end-->
+						<!--@end-->
 					</dl>
-	
-                    <a name="comment_{$comment->get('comment_srl')}"></a>
-                    <div class="itemContent">
+
+					<a name="comment_{$comment->get('comment_srl')}"></a>
+					<div class="itemContent">
 					<!--@if(!$comment->isAccessible())-->
 						<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="secretMessage">
 						<input type="hidden" name="mid" value="{$mid}" />
@@ -57,13 +57,13 @@
 						</form>
 					<!--@else-->
 
-                        <!--@if($comment->getProfileImage())-->
-                            <img src="{$comment->getProfileImage()}" alt="profile" class="commentProfileImage" />
-                        <!--@end-->
+						<!--@if($comment->getProfileImage())-->
+							<img src="{$comment->getProfileImage()}" alt="profile" class="commentProfileImage" />
+						<!--@end-->
 						{$comment->getContent(true)}
 					<!--@end-->
-                    </div>
-					
+					</div>
+
 					<!--@if($comment->hasUploadedFIles())-->
 					<dl class="attachedFile">
 						<dt>{$lang->uploaded_file} :</dt>
@@ -73,48 +73,48 @@
 						<!--@end-->
 					</dl>
 					<!--@end-->
-		
+
 					<div class="btnArea">
 						<!--@if($comment->isGranted() || !$comment->get('member_srl'))-->
 						<a class="btn" href="{getUrl('act','dispBoardDeleteComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_delete}</a>
-						<a class="btn" href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_modify}</a> 
+						<a class="btn" href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_modify}</a>
 						<!--@end-->
 						<a class="btn" cond="$oDocument->allowComment()" href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_reply}</a>
 					</div>
-		
+
 					<!--@if($comment->get('voted_count')!=0 || $comment->get('blamed_count') != 0)-->
 					<div class="voted">
 						({$lang->voted_count}:
 						<a href="#layer_voted_member" class="voted_member_{$comment->comment_srl} comment votedup">{$comment->get('voted_count')?$comment->get('voted_count'):0}</a> / <a href="#layer_voted_member" class="voted_member_{$comment->comment_srl} comment voteddown">{$comment->get('blamed_count')?$comment->get('blamed_count'):0}</a>)
 					</div>
 					<!--@end-->
-		
+
 				</div>
 				<!--@if($comment->get('depth'))-->
 			<!--@end-->
-			
+
 		</div>
 		<!--@end-->
 
 </div>
 
-    <!--@if($oDocument->comment_page_navigation)-->
+	<!--@if($oDocument->comment_page_navigation)-->
 	{@
 		$cpageStr = sprintf('%d_cpage', $oDocument->get('document_srl'));
 		$cpage = Context::get($cpageStr);
 	}
-    <div class="pagination a1">
-        <a href="{getUrl($cpageStr,1)}#{$oDocument->get('document_srl')}_comment" class="prevEnd">{$lang->first_page}</a> 
-        <!--@while($page_no = $oDocument->comment_page_navigation->getNextPage())-->
-            <!--@if($cpage == $page_no)-->
-                <strong>{$page_no}</strong> 
-            <!--@else-->
-                <a href="{getUrl($cpageStr,$page_no)}#{$oDocument->get('document_srl')}_comment">{$page_no}</a>
-            <!--@end-->
-        <!--@end-->
-        <a href="{getUrl($cpageStr,$oDocument->comment_page_navigation->last_page)}#{$oDocument->get('document_srl')}_comment" class="nextEnd">{$lang->last_page}</a>
-    </div>
-    <!--@end-->
+	<div class="pagination a1">
+		<a href="{getUrl($cpageStr,1)}#{$oDocument->get('document_srl')}_comment" class="prevEnd">{$lang->first_page}</a>
+		<!--@while($page_no = $oDocument->comment_page_navigation->getNextPage())-->
+			<!--@if($cpage == $page_no)-->
+				<strong>{$page_no}</strong>
+			<!--@else-->
+				<a href="{getUrl($cpageStr,$page_no)}#{$oDocument->get('document_srl')}_comment">{$page_no}</a>
+			<!--@end-->
+		<!--@end-->
+		<a href="{getUrl($cpageStr,$oDocument->comment_page_navigation->last_page)}#{$oDocument->get('document_srl')}_comment" class="nextEnd">{$lang->last_page}</a>
+	</div>
+	<!--@end-->
 
 </div>
 <!--@end-->

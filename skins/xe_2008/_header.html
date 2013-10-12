@@ -1,5 +1,5 @@
 <!--@if(!$module_info->colorset)-->
-    {@$module_info->colorset = "white"}
+	{@$module_info->colorset = "white"}
 <!--@end-->
 	
 <!--%import("css/board.css")-->
@@ -18,26 +18,26 @@
 <!--@if(!$module_info->thumbnail_height)-->{@ $module_info->thumbnail_height = 100; }<!--@end-->
 
 <!--@if($order_type == "desc")-->
-    {@ $order_icon = "buttonDescending.gif" }
-    {@ $order_type = "asc"; }
+	{@ $order_icon = "buttonDescending.gif" }
+	{@ $order_type = "asc"; }
 <!--@else-->
-    {@ $order_icon = "buttonAscending.gif" }
-    {@ $order_type = "desc"; }
+	{@ $order_icon = "buttonAscending.gif" }
+	{@ $order_type = "desc"; }
 <!--@end-->
 
 <!--@if($module_info->default_style != 'forum' && $module_info->default_style != 'blog')-->
-    <!--@if($listStyle=='gallery')-->
-        {@ $module_info->default_style = 'gallery'}
-    <!--@elseif($listStyle=='webzine')-->
-        {@ $module_info->default_style = 'webzine'}
-    <!--@elseif($listStyle=='list')-->
-        {@ $module_info->default_style = 'list'}
-    <!--@end-->
+	<!--@if($listStyle=='gallery')-->
+		{@ $module_info->default_style = 'gallery'}
+	<!--@elseif($listStyle=='webzine')-->
+		{@ $module_info->default_style = 'webzine'}
+	<!--@elseif($listStyle=='list')-->
+		{@ $module_info->default_style = 'list'}
+	<!--@end-->
 <!--@end-->
 
 <div class="board">
 	{$module_info->header_text}
-    <div class="boardHeader">
+	<div class="boardHeader">
 		<!--@if($module_info->title)-->
 		<div class="boardTitle">
 			<h2 class="boardTitleText"><a href="{getUrl('','mid',$mid,'listStyle',$listStyle)}">{$module_info->title}<!--@if($module_info->sub_title)--> : <em>{$module_info->sub_title}</em><!--@end--></a></h2>
@@ -47,14 +47,14 @@
 		<!--@if($module_info->comment)-->
 		<p class="boardDescription">{$module_info->comment}</p>
 		<!--@end-->
-    </div>
+	</div>
 
 <!--@if($module_info->display_login_info != 'N' || $module_info->display_setup_button != 'N')-->
-    <div class="boardInformation">
+	<div class="boardInformation">
 
-        <!--@if($total_count && $module_info->default_style != 'blog')-->
-        <div class="infoLeft">{$lang->document_count} <strong>{number_format($total_count)}</strong></div>
-        <!--@end-->
+		<!--@if($total_count && $module_info->default_style != 'blog')-->
+		<div class="infoLeft">{$lang->document_count} <strong>{number_format($total_count)}</strong></div>
+		<!--@end-->
 		
 		<div class="infoRight">
 			<ul>
@@ -83,5 +83,5 @@
 				<li class="contributors icon"><a href="{getUrl('','module','module','act','dispModuleSkinInfo','selected_module',$module_info->module, 'skin', $module_info->skin)}" onclick="popopen(this.href,'skinInfo'); return false;" title="Contributors"><span>Contributors</span></a></li>
 			</ul>
 		</div>
-    </div>
+	</div>
 <!--@end-->

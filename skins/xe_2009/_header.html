@@ -1,6 +1,6 @@
 {$module_info->browser_title}
 <!--@if(!$module_info->colorset)-->
-    {@$module_info->colorset = "white"}
+	{@$module_info->colorset = "white"}
 <!--@end-->
 <!--%import("css/board.css")-->
 
@@ -18,27 +18,27 @@
 <!--@if(!$module_info->thumbnail_height)-->{@ $module_info->thumbnail_height = 100; }<!--@end-->
 
 <!--@if($order_type == "desc")-->
-    {@ $order_icon = "buttonDescending.gif" }
-    {@ $order_type = "asc"; }
+	{@ $order_icon = "buttonDescending.gif" }
+	{@ $order_type = "asc"; }
 <!--@else-->
-    {@ $order_icon = "buttonAscending.gif" }
-    {@ $order_type = "desc"; }
+	{@ $order_icon = "buttonAscending.gif" }
+	{@ $order_type = "desc"; }
 <!--@end-->
 
 <!--@if($listStyle=='gallery')-->
-    {@ $module_info->default_style = 'gallery'}
+	{@ $module_info->default_style = 'gallery'}
 <!--@elseif($listStyle=='webzine')-->
-    {@ $module_info->default_style = 'webzine'}
+	{@ $module_info->default_style = 'webzine'}
 <!--@elseif($listStyle=='list')-->
-    {@ $module_info->default_style = 'list'}
+	{@ $module_info->default_style = 'list'}
 <!--@elseif(!in_array($module_info->default_style,array('list','webzine','gallery','blog')))-->
-    {@ $module_info->default_style = 'list'}
+	{@ $module_info->default_style = 'list'}
 <!--@end-->
 
 {$module_info->header_text}
 
 <div class="board">
-    <div class="boardHeader">
+	<div class="boardHeader">
 		<!--@if($module_info->title)-->
 		<div class="boardTitle">
 			<h2 class="boardTitleText"><a href="{getUrl('','mid',$mid,'listStyle',$listStyle)}">{$module_info->title}<!--@if($module_info->sub_title)--> : <em>{$module_info->sub_title}</em><!--@end--></a></h2>
@@ -48,15 +48,15 @@
 		<!--@if($module_info->comment)-->
 		<p class="boardDescription">{$module_info->comment}</p>
 		<!--@end-->
-    </div>
+	</div>
 
-    <!--@if($module_info->display_setup_button != 'N')-->
-    <div class="boardInformation">
+	<!--@if($module_info->display_setup_button != 'N')-->
+	<div class="boardInformation">
 
-        <!--@if($total_count && $module_info->default_style != 'blog')-->
-        <div class="infoSum">{$lang->document_count} <strong>{number_format($total_count)}</strong></div>
-        <!--@end-->
-		
+		<!--@if($total_count && $module_info->default_style != 'blog')-->
+		<div class="infoSum">{$lang->document_count} <strong>{number_format($total_count)}</strong></div>
+		<!--@end-->
+
 		<div class="infoView">
 			<ul>
 				<!--@if($grant->manager && $module_info->display_setup_button != 'N')-->
@@ -67,5 +67,5 @@
 				<li class="listTypeGallery icon<!--@if($module_info->default_style=='gallery')--> active<!--@end-->"><a href="{getUrl('listStyle','gallery','act','','document_srl','')}" title="Gallery Style"><span>Gallery Style</span></a></li>
 			</ul>
 		</div>
-    </div>
+	</div>
 <!--@end-->

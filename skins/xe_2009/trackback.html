@@ -7,10 +7,10 @@
 			{$lang->trackback} <em>'{$oDocument->getTrackbackCount()}'</em>
 		<!--@end-->
 	</h3>
-    <p class="trackbackURL"><a href="{$oDocument->getTrackbackUrl()}" onclick="return false;">{$oDocument->getTrackbackUrl()}</a></p>
+	<p class="trackbackURL"><a href="{$oDocument->getTrackbackUrl()}" onclick="return false;">{$oDocument->getTrackbackUrl()}</a></p>
 
 	<div class="trackbackList">
-	
+
 		<!--@if($oDocument->getTrackbackCount())-->
 			<!--@foreach($oDocument->getTrackbacks() as $key => $val)-->
 			<div class="item" id="trackback_{$val->trackback_srl}">
@@ -29,8 +29,8 @@
 			</div>
 			<!--@end-->
 		<!--@end-->
-	
+
 	</div>
-	
+
 </div>
 <!--@end-->

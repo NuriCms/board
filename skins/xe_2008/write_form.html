@@ -19,33 +19,33 @@
 		<input type="text" name="title" class="iText" value="{htmlspecialchars($oDocument->getTitleText())}" title="{$lang->title}" />
 	</div>
 
-    <!--@if(count($extra_keys))-->
-    <table border="1" cellspacing="0" summary="Extra Form" class="extraVarsList">
+	<!--@if(count($extra_keys))-->
+	<table border="1" cellspacing="0" summary="Extra Form" class="extraVarsList">
 	<caption><em>*</em> : {$lang->is_required}</caption>
-    <!--@foreach($extra_keys as $key => $val)-->
-    <tr>
-        <th scope="row">{$val->name} <!--@if($val->is_required=='Y')--><em>*</em><!--@end--></th>
-        <td>{$val->getFormHTML()}</td>
-    </tr>
-    <!--@endforeach-->
-    </table>
-    <!--@endif-->
+	<!--@foreach($extra_keys as $key => $val)-->
+	<tr>
+		<th scope="row">{$val->name} <!--@if($val->is_required=='Y')--><em>*</em><!--@end--></th>
+		<td>{$val->getFormHTML()}</td>
+	</tr>
+	<!--@endforeach-->
+	</table>
+	<!--@endif-->
 
-    <div class="editor">{$oDocument->getEditor()}</div>
+	<div class="editor">{$oDocument->getEditor()}</div>
 
-    <div class="tag">
-        <input type="text" name="tags" value="{htmlspecialchars($oDocument->get('tags'))}" class="iText" title="Tag" />
+	<div class="tag">
+		<input type="text" name="tags" value="{htmlspecialchars($oDocument->get('tags'))}" class="iText" title="Tag" />
 		<p>{$lang->about_tag}</p>
-    </div>
+	</div>
 
 	<div class="editOption">
-        <!--@if($grant->manager)-->
-        {@ $_color = array('555555','222288','226622','2266EE','8866CC','88AA66','EE2222','EE6622','EEAA22','EEEE22') }
-        <select name="title_color" id="title_color" <!--@if($oDocument->get('title_color'))-->style="color:#{$oDocument->get('title_color')};"<!--@end--> onchange="this.style.color=this.options[this.selectedIndex].style.color;">
-                <option value="" style="color:#CCCCCC;">{$lang->title_color}</option>
-                <!--@foreach($_color as $_col)-->
-                <option value="{$_col}" style="color:#{$_col}" <!--@if($oDocument->get('title_color')==$_col)-->selected="selected"<!--@end-->>{$lang->title_color}</option>
-                <!--@endforeach-->
+		<!--@if($grant->manager)-->
+		{@ $_color = array('555555','222288','226622','2266EE','8866CC','88AA66','EE2222','EE6622','EEAA22','EEEE22') }
+		<select name="title_color" id="title_color" <!--@if($oDocument->get('title_color'))-->style="color:#{$oDocument->get('title_color')};"<!--@end--> onchange="this.style.color=this.options[this.selectedIndex].style.color;">
+				<option value="" style="color:#CCCCCC;">{$lang->title_color}</option>
+				<!--@foreach($_color as $_col)-->
+				<option value="{$_col}" style="color:#{$_col}" <!--@if($oDocument->get('title_color')==$_col)-->selected="selected"<!--@end-->>{$lang->title_color}</option>
+				<!--@endforeach-->
 		</select>
 		<input type="checkbox" name="title_bold" id="title_bold" value="Y" <!--@if($oDocument->get('title_bold')=='Y')-->checked="checked"<!--@end--> />
 		<label for="title_bold">{$lang->title_bold}</label>
@@ -62,11 +62,11 @@
 		<!--@end-->
 		<!--@if(is_array($status_list))-->
 			<!--@foreach($status_list AS $key=>$value)-->
-			<input type="radio" name="status" value="{$key}" id="{$key}" <!--@if($oDocument->get('status') == $key || ($key == 'PUBLIC' && !$document_srl))-->checked="checked"<!--@end--> /> 
+			<input type="radio" name="status" value="{$key}" id="{$key}" <!--@if($oDocument->get('status') == $key || ($key == 'PUBLIC' && !$document_srl))-->checked="checked"<!--@end--> />
 			<label for="{$key}">{$value}</label>
 			<!--@end-->
 		<!--@end-->
-    </div>
+	</div>
 
 	<!--@if(!$is_logged)-->
 	<div class="userNameAndPw">
@@ -88,16 +88,16 @@
 		</dl>
 	</div>
 	<!--@end-->
-		
+
 	<div class="btnArea">
-        <!--@if($is_logged)-->
+		<!--@if($is_logged)-->
 		<!--@if(!$oDocument->isExists() || $oDocument->get('status') == 'TEMP')-->
-        <button class="btn" type="button" onclick="doDocumentSave(this); return false;">{$lang->cmd_temp_save}</button>
-        <button class="btn" type="button" onclick="doDocumentLoad(this); return false;">{$lang->cmd_load}</button>
+		<button class="btn" type="button" onclick="doDocumentSave(this); return false;">{$lang->cmd_temp_save}</button>
+		<button class="btn" type="button" onclick="doDocumentLoad(this); return false;">{$lang->cmd_load}</button>
 		<!--@end-->
-        <!--@end-->
+		<!--@end-->
 		<input class="btn" type="submit" value="{$lang->cmd_registration}" />
 	</div>
 
-    </form>
+	</form>
 <!--#include("_footer.html")-->

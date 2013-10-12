@@ -1,9 +1,9 @@
 <load target="board.default.css" />
 <load target="board.default.js" type="body" />
 <!--@if($order_type == "desc")-->
-    {@ $order_type = "asc"; }
+	{@ $order_type = "asc"; }
 <!--@else-->
-    {@ $order_type = "desc"; }
+	{@ $order_type = "desc"; }
 <!--@end-->
 <block cond="!$module_info->duration_new = (int)$module_info->duration_new">{@ $module_info->duration_new = 12 }</block>
 {@ $cate_list = array(); $current_key = null; }

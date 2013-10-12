@@ -12,8 +12,8 @@
 		<input type="hidden" name="document_srl" value="{$oComment->get('document_srl')}" />
 		<input type="hidden" name="comment_srl" value="{$oComment->get('comment_srl')}" />
 		<input type="hidden" name="parent_srl" value="{$oComment->get('parent_srl')}" />
-        <input type="hidden" name="content" value="{htmlspecialchars($oComment->get('content'))}" />
-        {$oComment->getEditor()}
+		<input type="hidden" name="content" value="{htmlspecialchars($oComment->get('content'))}" />
+		{$oComment->getEditor()}
 		<div class="write_author">
 			<span class="item" cond="!$is_logged">
 				<label for="userName" class="iLabel">{$lang->writer}</label>

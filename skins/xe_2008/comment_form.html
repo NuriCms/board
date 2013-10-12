@@ -2,19 +2,19 @@
 
 <!--@if($oSourceComment->isExists())-->
 <div class="feedbackList">
-    <div class="item">
-        <h4 class="author"><a href="#popup_menu_area" class="member_{$oSourceComment->getMemberSrl()}" onclick="return false">{$oSourceComment->getNickName()}</a></h4>
-        <dl class="time">
+	<div class="item">
+		<h4 class="author"><a href="#popup_menu_area" class="member_{$oSourceComment->getMemberSrl()}" onclick="return false">{$oSourceComment->getNickName()}</a></h4>
+		<dl class="time">
 			<dt>Time :</dt>
-            <dd>{$oSourceComment->getRegdate("Y.m.d H:i")}</dd>
-            <!--@if($grant->manager)-->
+			<dd>{$oSourceComment->getRegdate("Y.m.d H:i")}</dd>
+			<!--@if($grant->manager)-->
 			<dd>({$oSourceComment->get('ipaddress')})</dd>
-            <!--@end-->
-        </dl>
+			<!--@end-->
+		</dl>
 
 		{$oSourceComment->getContent(false)}
-		
-    </div>
+
+	</div>
 </div>
 <!--@end-->
 
@@ -26,9 +26,9 @@
 <input type="hidden" name="parent_srl" value="{$oComment->get('parent_srl')}" />
 
 <div class="boardWrite commentEditor">
-	
-    <div class="editor">{$oComment->getEditor()}</div>
-	
+
+	<div class="editor">{$oComment->getEditor()}</div>
+
 	<dl class="editOption">
 		<dt>options: </dt>
 		<!--@if($is_logged)-->
@@ -44,7 +44,7 @@
 	</dl>
 
 	<!--@if(!$is_logged)-->
-    <div class="userNameAndPw">
+	<div class="userNameAndPw">
 		<dl>
 			<dt><label for="userName">{$lang->writer}</label> :</dt>
 			<dd class="userName"><input type="text" name="nick_name" value="" class="iText" id="userName"/></dd>
@@ -64,11 +64,11 @@
 	</div>
 	<!--@end-->
 
-	
+
 	<div class="boardNavigation">
 		<input class="btn" type="submit" value="{$lang->cmd_comment_registration}" />
 	</div>
-	
+
 </div>
 
 

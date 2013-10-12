@@ -5,24 +5,24 @@
 	<input type="hidden" name="mid" value="{$mid}" />
 	<input type="hidden" name="content" value="{$oDocument->getContentText()}" />
 	<input type="hidden" name="document_srl" value="{$document_srl}" />
-	
+
 	<div class="boardWrite">
 		<!--@if(!$is_logged)-->
 		<div class="userNameAndPw">
 			<label for="userName">{$lang->writer}</label>
 			<input type="text" name="nick_name" value="{$oDocument->getNickName()}" class="userName iText" id="userName"/>
-	
+
 			<label for="userPw">{$lang->password}</label>
 			<input type="password" name="password" value="" id="userPw" class="userPw iText" />
-	
+
 			<label for="emailAddress">{$lang->email_address}</label>
 			<input type="text" name="email_address" value="{htmlspecialchars($oDocument->get('email_address'))}" id="emailAddress" class="emailAddress iText"/>
-	
+
 			<label for="homePage">{$lang->homepage}</label>
 			<input type="text" name="homepage" value="{htmlspecialchars($oDocument->get('homepage'))}" id="homePage" class="homePage iText"/>
 		</div>
 		<!--@end-->
-	
+
 		<div class="title">
 			<!--@if($module_info->use_category=="Y")-->
 			<select name="category_srl" class="category">
@@ -38,7 +38,7 @@
 			<!--@endif-->
 			<input type="text" name="title" class="title iText" value="{htmlspecialchars($oDocument->getTitleText())}" />
 		</div>
-	
+
 		<div class="option">
 			<!--@if($grant->manager)-->
 			{@ $_color = array('555555','222288','226622','2266EE','8866CC','88AA66','EE2222','EE6622','EEAA22','EEEE22') }
@@ -63,12 +63,12 @@
 			<!--@end-->
 			<!--@if(is_array($status_list))-->
 				<!--@foreach($status_list AS $key=>$value)-->
-				<input type="radio" name="status" value="{$key}" id="{$key}" <!--@if($oDocument->get('status') == $key || ($key == 'PUBLIC' && !$document_srl))-->checked="checked"<!--@end--> /> 
+				<input type="radio" name="status" value="{$key}" id="{$key}" <!--@if($oDocument->get('status') == $key || ($key == 'PUBLIC' && !$document_srl))-->checked="checked"<!--@end--> />
 				<label for="{$key}">{$value}</label>
 				<!--@end-->
 			<!--@end-->
 		</div>
-	
+
 		<!--@if(count($extra_keys))-->
 		<table cellspacing="0" summary="" class="extraVarsList">
 		<col width="150" />
@@ -81,9 +81,9 @@
 		<!--@endforeach-->
 		</table>
 		<!--@endif-->
-	
+
 		<div class="editor">{$oDocument->getEditor()}</div>
-	
+
 		<div class="tag">
 			<input type="text" name="tags" value="{htmlspecialchars($oDocument->get('tags'))}" class="iText" />
 			<p class="info">{$lang->about_tag}</p>

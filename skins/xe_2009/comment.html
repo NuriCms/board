@@ -7,18 +7,18 @@
 			{$lang->comment} <em>'{$oDocument->getCommentcount()}'</em>
 		<!--@end-->
 	</h3>
-	
+
 	<div class="replyList">
 
 		{@ $_comment_list = $oDocument->getComments() }
 		<!--@foreach($_comment_list as $key => $comment)-->
 				<div class="item <!--@if($comment->get('depth'))-->itemReply<!--@end-->" id="comment_{$comment->comment_srl}">
 					<div class="indent" <!--@if($comment->get('depth'))--> style="margin-left:{($comment->get('depth'))*15}px" <!--@end-->>
-					
+
 					<div class="itemAside">
-                        <!--@if($comment->getProfileImage())-->
-                            <img src="{$comment->getProfileImage()}" alt="profile" class="profile" />
-                        <!--@end-->
+						<!--@if($comment->getProfileImage())-->
+							<img src="{$comment->getProfileImage()}" alt="profile" class="profile" />
+						<!--@end-->
 						<h4 class="author">
 						<!--@if(!$comment->member_srl)-->
 							<!--@if($comment->homepage)-->
@@ -30,7 +30,7 @@
 							<a href="#popup_menu_area" class="member_{$comment->member_srl}" onclick="return false">{$comment->getNickName()}</a>
 						<!--@end-->
 						</h4>
-	
+
 						<p class="meta">
 							{$comment->getRegdate('Y.m.d')}
 							{$comment->getRegdate('H:i:s')}
@@ -38,7 +38,7 @@
 							<br />{$comment->getIpaddress()}
 						<!--@end-->
 						</p>
-						
+
 						<!--@if($comment->get('voted_count')!=0 || $comment->get('blamed_count') != 0)-->
 						<dl class="vote">
 							<dt class="love"><span>{$lang->cmd_vote}</span></dt>
@@ -47,10 +47,10 @@
 							<dd>{$comment->get('blamed_count')?$comment->get('blamed_count'):0}</dd>
 						</dl>
 						<!--@end-->
-						
+
 					</div>
-	
-                    <div class="itemContent">
+
+					<div class="itemContent">
 					<!--@if(!$comment->isAccessible())-->
 						<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="secretMessage">
 						<input type="hidden" name="mid" value="{$mid}" />
@@ -84,39 +84,39 @@
 					<!--@if($is_logged)-->
 						<li class="wouldYou"><a href="#popup_menu_area" class="comment_{$comment->comment_srl}">{$lang->cmd_comment_do}</a></li>
 					<!--@end-->
-						<li cond="$oDocument->allowComment()"><a href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_reply}</a></li> 
+						<li cond="$oDocument->allowComment()"><a href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_reply}</a></li>
 					<!--@if($comment->isGranted() || !$comment->get('member_srl'))-->
-						<li><a href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_modify}</a></li> 
+						<li><a href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_modify}</a></li>
 						<li><a href="{getUrl('act','dispBoardDeleteComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_delete}</a></li>
 					<!--@end-->
 					</ul>
 
 					<!--@end-->
 
-                    </div>
-					
+					</div>
+
 				</div>
 				<!--@if($comment->get('depth'))-->
 			<!--@end-->
-			
+
 		</div>
 		<!--@end-->
 
 </div>
 
-    <!--@if($oDocument->comment_page_navigation)-->
-    <div class="pagination">
-        <a href="{getUrl('cpage',1)}#comment" class="prevEnd">{$lang->first_page}</a> 
-        <!--@while($page_no = $oDocument->comment_page_navigation->getNextPage())-->
-            <!--@if($cpage == $page_no)-->
-                <strong>{$page_no}</strong> 
-            <!--@else-->
-                <a href="{getUrl('cpage',$page_no)}#comment">{$page_no}</a>
-            <!--@end-->
-        <!--@end-->
-        <a href="{getUrl('cpage',$oDocument->comment_page_navigation->last_page)}#comment" class="nextEnd">{$lang->last_page}</a>
-    </div>
-    <!--@end-->
+	<!--@if($oDocument->comment_page_navigation)-->
+	<div class="pagination">
+		<a href="{getUrl('cpage',1)}#comment" class="prevEnd">{$lang->first_page}</a>
+		<!--@while($page_no = $oDocument->comment_page_navigation->getNextPage())-->
+			<!--@if($cpage == $page_no)-->
+				<strong>{$page_no}</strong>
+			<!--@else-->
+				<a href="{getUrl('cpage',$page_no)}#comment">{$page_no}</a>
+			<!--@end-->
+		<!--@end-->
+		<a href="{getUrl('cpage',$oDocument->comment_page_navigation->last_page)}#comment" class="nextEnd">{$lang->last_page}</a>
+	</div>
+	<!--@end-->
 
 </div>
 <!--@end-->
