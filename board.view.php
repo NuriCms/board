@@ -236,8 +236,8 @@ class boardView extends board {
 				// add the document title to the browser
 				Context::addBrowserTitle($oDocument->getTitleText());
 
-				// update the document view count (if the document is not secret)
-				if(!$oDocument->isSecret() || $oDocument->isGranted()) $oDocument->updateReadedCount();
+				// update the document view count (if the document is not secret), Crawler would not update ReadedCount
+				if((!$oDocument->isSecret() || $oDocument->isGranted()) && !isCrawler()) $oDocument->updateReadedCount();
 
 				// disappear the document if it is secret
 				if($oDocument->isSecret() && !$oDocument->isGranted()) $oDocument->add('content',Context::getLang('thisissecret'));
@@ -424,6 +424,7 @@ class boardView extends board {
 		// generate the tag module model object
 		$oTagModel = &getModel('tag');
 
+		$obj = new stdClass;
 		$obj->mid = $this->module_info->mid;
 		$obj->list_count = 10000;
 		$output = $oTagModel->getTagList($obj);
